@@ -3,7 +3,7 @@ const character = [
         characterName: 'Igor',        //AUTO 
         arcana: 'Fool',
         time: ['day', 'night'],
-        DOW: ['Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Velvet Room'],
         rain: true
     },
@@ -11,7 +11,7 @@ const character = [
         characterName: 'Morgana',        //AUTO
         arcana: 'Magician',
         time: ['day','night'],
-        DOW: ['Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['LeBlanc'],
         rain: true
     },
@@ -19,7 +19,7 @@ const character = [
         characterName: 'Sae',       //AUTO
         arcana: 'Judgement',
         time: ['day, night'],
-        DOW: ['Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Interrogation room'],
         rain: true
     },
@@ -27,7 +27,7 @@ const character = [
         characterName: 'Ryuji',
         arcana: 'Chariot',
         time: ['day'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Shujin Academy', 'Arcade'],
         rain: true
     },
@@ -35,7 +35,7 @@ const character = [
         characterName: 'Ann',
         arcana: 'Lovers',
         time: ['day'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Friday', 'Sunday'],
+        DOW: [1,2,3,5,7],
         location: ['Underground Mall'],
         rain: true
     },
@@ -43,7 +43,7 @@ const character = [
         characterName: 'Yusuke',
         arcana: 'Emperor',
         time: ['day'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Underground Walkway'],
         rain: true
     },
@@ -51,7 +51,7 @@ const character = [
         characterName: 'Makoto',
         arcana: 'Priestess',
         time: ['day'],
-        DOW:  ['Tuesday', 'Thursday', 'Saturday', 'Sunday'],
+        DOW:  [2,4,6,7],
         location: ['Shujin Academy'],
         rain: true
     },
@@ -59,7 +59,7 @@ const character = [
         characterName: 'Futaba',
         arcana: 'Hermit',
         time: ['day'],
-        DOW: ['Wednesday', 'Thursday', 'Saturday', 'Sunday'],
+        DOW: [3,4,6,7],
         location: ['Yongen-Jaya'],
         rain: false
     },
@@ -67,7 +67,7 @@ const character = [
         characterName: 'Haru',
         arcana: 'Empress',
         time: ['day'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        DOW: [1,2,3,4,5,6],
         location: ['Shujin Academy Rooftop'],
         rain: false
     },
@@ -75,15 +75,15 @@ const character = [
         characterName: 'Akechi',
         arcana: 'Justice',
         time: ['night'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Kichioji'],
         rain: true
     },
     {
-        characterName: ['Kasumi', 'Sumire'],
+        characterName: 'Sumire',
         arcana: 'Chariot',
         time: ['day'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Shujin Academy, Shibuya'],
         rain: true
     },
@@ -91,7 +91,7 @@ const character = [
         characterName: 'Maruki',
         arcana: 'Councillor',
         time: ['day'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Friday'],
+        DOW: [1,2,3,5],
         location: ['Shujin Academy'],
         rain: true
     },
@@ -99,15 +99,15 @@ const character = [
         characterName: 'Chihaya',
         arcana: 'Fortune',
         time: ['night'],
-        DOW: ['Tuesday', 'Thursday', 'Saturday', 'Sunday'],
+        DOW: [2,4,6,7],
         location: ['Shinjuku'],
         rain: false
     },
     {
-        characterName: ['Caroline and Justine', 'Lavenza'],     //SPECIAL
+        characterName: 'Lavenza',     //SPECIAL
         arcana: 'Strength',
         time: ['day', 'night'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Velvet Room'],
         rain: true
     },
@@ -115,7 +115,7 @@ const character = [
         characterName: 'Iwai',
         arcana: 'Hanged Man',
         time: ['night'],
-        DOW: ['Tuesday', 'Thursday', 'Sunday'],
+        DOW: [2,4,7],
         location: ['Untouchable'],
         rain: true
     },
@@ -123,7 +123,7 @@ const character = [
         characterName: 'Takemi',
         arcana: 'Death',
         time: ['day'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Clinic'],
         rain: true
     },
@@ -131,7 +131,7 @@ const character = [
         characterName: 'Kawakami',
         arcana: 'Temperance',
         time: ['night'],
-        DOW: ['Friday', 'Saturday'],
+        DOW: [5,6],
         location: ['LeBlanc'],
         rain: true
     },
@@ -139,7 +139,7 @@ const character = [
         characterName: 'Ohya',
         arcana: 'Devil',
         time: ['night'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Crossroads'],
         rain: true
     },
@@ -147,7 +147,7 @@ const character = [
         characterName: 'Hifumi',
         arcana: 'Star',
         time: ['night'],
-        DOW: ['Monday', 'Wednesday', 'Saturday', 'Sunday'],
+        DOW: [1,3,6,7],
         location: ['Kanda'],
         rain: true
     },
@@ -155,7 +155,7 @@ const character = [
         characterName: 'Mishima',
         arcana: 'Moon',
         time: ['night'],
-        DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        DOW: [1,2,3,4,5,6,7],
         location: ['Shibuya, Shinjuku, Akihabara'],
         rain: true
     },
@@ -163,7 +163,7 @@ const character = [
         characterName: 'Yoshida',
         arcana: 'Sun',
         time: ['night'],
-        DOW: ['Sunday'],
+        DOW: [7],
         location: ['Central Square'],
         rain: true
     },
@@ -171,7 +171,7 @@ const character = [
         characterName: 'Sojiro',
         arcana: 'Hierophant',
         time: ['night'],
-        DOW: ['Monday', 'Tuesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        DOW: [1,2,4,5,6,7],
         location: ['LeBlanc'],
         rain: true
     },
@@ -179,7 +179,7 @@ const character = [
         characterName: 'Shinya',
         arcana: 'Tower',
         time: ['day'],
-        DOW: ['Monday', 'Tuesday', 'Thursday', 'Saturday'],
+        DOW: [1,2,4,6],
         location: ['Arcade'],
         rain: true
     },
@@ -211,6 +211,7 @@ console.log(currentTime(hour))
 character.forEach(char => {
     //compare current dow and time; add weather later ...
     if (char.time.includes(currentTime(hour)) && char.DOW.includes(dow)){
+        //check for 1 or more
         console.log(char.characterName)
     }
 });
