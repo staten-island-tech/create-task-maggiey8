@@ -76,15 +76,15 @@ const character = [
         arcana: 'Justice',
         time: ['night'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Kichioji'],
+        location: ['Kichijoji'],
         rain: true
     },
     {
         characterName: 'Sumire',
-        arcana: 'Chariot',
+        arcana: 'Faith',
         time: ['day'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Shujin Academy, Shibuya'],
+        location: ['Kichijoji'],
         rain: true
     },
     {
@@ -191,7 +191,7 @@ const current = new Date(timestamp)
 let hour = current.getHours()
 let dow = current.getDay()
 
-console.log(hour, dow)
+//console.log(hour, dow)
 
 function currentTime(hour) {
     //Day
@@ -212,6 +212,8 @@ character.forEach(char => {
     //compare current dow and time; add weather later ...
     if (char.time.includes(currentTime(hour)) && char.DOW.includes(dow)){
         //check for 1 or more
-        console.log(char.characterName)
+        console.log(char.characterName, char.arcana, char.location)
     }
 });
+
+//how do i use openweather api help
