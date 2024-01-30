@@ -104,7 +104,7 @@ const character = [
         rain: false
     },
     {
-        characterName: ['Caroline and Justine', 'Lavenza'],
+        characterName: ['Caroline and Justine', 'Lavenza'],     //SPECIAL
         arcana: 'Strength',
         time: ['day', 'night'],
         DOW: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -184,3 +184,5 @@ const character = [
         rain: true
     },
 ]
+
+export {character}
