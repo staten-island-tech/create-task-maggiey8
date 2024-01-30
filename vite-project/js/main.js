@@ -25,4 +25,7 @@ console.log(currentTime(hour))
 
 character.forEach(char => {
     //compare current dow and time; add weather later ...
+    if (char.time.includes(currentTime(hour)) && char.DOW.includes(dow)){
+        console.log(char.characterName)
+    }
 });
