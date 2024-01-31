@@ -206,7 +206,7 @@ function currentTime(hour) {
     }
 }
 
-console.log(currentTime(hour))
+//console.log(currentTime(hour))
 
 character.forEach(char => {
     //compare current dow and time; add weather later ...
@@ -217,3 +217,5 @@ character.forEach(char => {
 });
 
 //how do i use openweather api help
+
+const link = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=a4f12ee62dadd273edfef816d090594d'
