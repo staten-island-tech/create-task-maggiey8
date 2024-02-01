@@ -24,6 +24,14 @@ const character = [
         rain: true
     },
     {
+        characterName: 'Lavenza',     //SPECIAL
+        arcana: 'Strength',
+        time: ['day', 'night'],
+        DOW: [1,2,3,4,5,6,7],
+        location: ['Velvet Room'],
+        rain: true
+    },
+    {
         characterName: 'Ryuji',
         arcana: 'Chariot',
         time: ['day'],
@@ -102,14 +110,6 @@ const character = [
         DOW: [2,4,6,7],
         location: ['Shinjuku'],
         rain: false
-    },
-    {
-        characterName: 'Lavenza',     //SPECIAL
-        arcana: 'Strength',
-        time: ['day', 'night'],
-        DOW: [1,2,3,4,5,6,7],
-        location: ['Velvet Room'],
-        rain: true
     },
     {
         characterName: 'Iwai',
@@ -216,6 +216,47 @@ character.forEach(char => {
     }
 });
 
-//how do i use openweather api help
+//if there is a space in the input, changes to - 
+let city = document.querySelector('.input').value
+if (city.includes(' ')) {
+    city.replace(' ', '-')
+}
 
-const link = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=a4f12ee62dadd273edfef816d090594d'
+//geocoding city name -> lat, long
+async function getCoord(city) {
+    try {
+        const cityLink = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=a4f12ee62dadd273edfef816d090594d`
+        let response = await fetch(cityLink)
+        let data = await response.json()
+        let lat = data.lat
+        let lon = data.lon
+        return lat, lon
+    }
+    catch(error) {
+        console.log(error)
+        document.querySelector('.input').value = 'Could not get Geocoding data'
+    }
+}
+
+
+async function getWeather(lat, lon) {
+    try {
+        const weatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a4f12ee62dadd273edfef816d090594d`
+        let response = await fetch(weatherLink)
+        let data = await response.json()
+        if (data.weather.main === ('Rain') || data.weather.main === ('Snow')) {
+            let precipTF = true
+            return precipTF
+        }
+        else {
+            let precipTF = false
+            return precipTF
+        }
+    }
+    catch(error) {
+        console.log(error)
+        document.querySelector('.input').value = 'Could not get Weather data'
+    }
+}
+
+getWeather(getCoord(london))
