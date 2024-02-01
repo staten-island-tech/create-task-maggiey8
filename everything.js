@@ -212,12 +212,12 @@ character.forEach(char => {
     //compare current dow and time; add weather later ...
     if (char.time.includes(currentTime(hour)) && char.DOW.includes(dow)){
         //check for 1 or more
-        console.log(char.characterName, char.arcana, char.location)
+        //console.log(char.characterName, char.arcana, char.location)
     }
 });
 
 //if there is a space in the input, changes to - 
-let city = document.querySelector('.input').value
+let city = document.querySelector('input').value
 if (city.includes(' ')) {
     city.replace(' ', '-')
 }
@@ -228,8 +228,9 @@ async function getCoord(city) {
         const cityLink = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=a4f12ee62dadd273edfef816d090594d`
         let response = await fetch(cityLink)
         let data = await response.json()
-        let lat = data.lat
-        let lon = data.lon
+        let lat = data[0].lat
+        let lon = data[0].lon
+        console.log(lat, lon)
         return lat, lon
     }
     catch(error) {
@@ -242,9 +243,10 @@ async function getCoord(city) {
 async function getWeather(lat, lon) {
     try {
         const weatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a4f12ee62dadd273edfef816d090594d`
+        console.log(weatherLink)
         let response = await fetch(weatherLink)
         let data = await response.json()
-        if (data.weather.main === ('Rain') || data.weather.main === ('Snow')) {
+        if (data.weather[0].main === ('Rain') || data.weather[0].main === ('Snow')) {
             let precipTF = true
             return precipTF
         }
@@ -255,8 +257,10 @@ async function getWeather(lat, lon) {
     }
     catch(error) {
         console.log(error)
-        document.querySelector('.input').value = 'Could not get Weather data'
+        document.querySelector('input').value = 'Could not get Weather data'
     }
 }
 
-getWeather(getCoord(london))
+console.log(getWeather(getCoord('london')))
+
+console.log(getWeather(51.5073219, -0.1276474))
