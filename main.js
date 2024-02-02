@@ -4,7 +4,6 @@ const character = [
         arcana: 'Fool',
         time: ['day', 'night'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Velvet Room'],
         rain: true
     },
     {
@@ -12,7 +11,6 @@ const character = [
         arcana: 'Magician',
         time: ['day','night'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['LeBlanc'],
         rain: true
     },
     {
@@ -20,7 +18,6 @@ const character = [
         arcana: 'Judgement',
         time: ['day, night'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Interrogation room'],
         rain: true
     },
     {
@@ -28,7 +25,6 @@ const character = [
         arcana: 'Strength',
         time: ['day', 'night'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Velvet Room'],
         rain: true
     },
     {
@@ -36,7 +32,6 @@ const character = [
         arcana: 'Chariot',
         time: ['day'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Shujin Academy', 'Arcade'],
         rain: true
     },
     {
@@ -44,7 +39,6 @@ const character = [
         arcana: 'Lovers',
         time: ['day'],
         DOW: [1,2,3,5,7],
-        location: ['Underground Mall'],
         rain: true
     },
     {
@@ -52,7 +46,6 @@ const character = [
         arcana: 'Emperor',
         time: ['day'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Underground Walkway'],
         rain: true
     },
     {
@@ -60,7 +53,6 @@ const character = [
         arcana: 'Priestess',
         time: ['day'],
         DOW:  [2,4,6,7],
-        location: ['Shujin Academy'],
         rain: true
     },
     {
@@ -68,7 +60,6 @@ const character = [
         arcana: 'Hermit',
         time: ['day'],
         DOW: [3,4,6,7],
-        location: ['Yongen-Jaya'],
         rain: false
     },
     {
@@ -76,7 +67,6 @@ const character = [
         arcana: 'Empress',
         time: ['day'],
         DOW: [1,2,3,4,5,6],
-        location: ['Shujin Academy Rooftop'],
         rain: false
     },
     {
@@ -84,7 +74,6 @@ const character = [
         arcana: 'Justice',
         time: ['night'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Kichijoji'],
         rain: true
     },
     {
@@ -92,7 +81,6 @@ const character = [
         arcana: 'Faith',
         time: ['day'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Kichijoji'],
         rain: true
     },
     {
@@ -100,7 +88,6 @@ const character = [
         arcana: 'Councillor',
         time: ['day'],
         DOW: [1,2,3,5],
-        location: ['Shujin Academy'],
         rain: true
     },
     {
@@ -108,7 +95,6 @@ const character = [
         arcana: 'Fortune',
         time: ['night'],
         DOW: [2,4,6,7],
-        location: ['Shinjuku'],
         rain: false
     },
     {
@@ -116,7 +102,6 @@ const character = [
         arcana: 'Hanged Man',
         time: ['night'],
         DOW: [2,4,7],
-        location: ['Untouchable'],
         rain: true
     },
     {
@@ -124,7 +109,6 @@ const character = [
         arcana: 'Death',
         time: ['day'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Clinic'],
         rain: true
     },
     {
@@ -132,7 +116,6 @@ const character = [
         arcana: 'Temperance',
         time: ['night'],
         DOW: [5,6],
-        location: ['LeBlanc'],
         rain: true
     },
     {
@@ -140,7 +123,6 @@ const character = [
         arcana: 'Devil',
         time: ['night'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Crossroads'],
         rain: true
     },
     {
@@ -148,7 +130,6 @@ const character = [
         arcana: 'Star',
         time: ['night'],
         DOW: [1,3,6,7],
-        location: ['Kanda'],
         rain: true
     },
     {
@@ -156,7 +137,6 @@ const character = [
         arcana: 'Moon',
         time: ['night'],
         DOW: [1,2,3,4,5,6,7],
-        location: ['Shibuya, Shinjuku, Akihabara'],
         rain: true
     },
     {
@@ -164,7 +144,6 @@ const character = [
         arcana: 'Sun',
         time: ['night'],
         DOW: [7],
-        location: ['Central Square'],
         rain: true
     },
     {
@@ -172,7 +151,6 @@ const character = [
         arcana: 'Hierophant',
         time: ['night'],
         DOW: [1,2,4,5,6,7],
-        location: ['LeBlanc'],
         rain: true
     },
     {
@@ -180,7 +158,6 @@ const character = [
         arcana: 'Tower',
         time: ['day'],
         DOW: [1,2,4,6],
-        location: ['Arcade'],
         rain: true
     },
 ]
@@ -190,6 +167,10 @@ const current = new Date(timestamp)
 
 let hour = current.getHours()
 let dow = current.getDay()
+
+//use this to compare to special dates (ingame auto?)
+let date = `${current.getMonth()+1}/${current.getDate()}`
+console.log(date)
 
 //console.log(hour, dow)
 
@@ -206,22 +187,6 @@ function currentTime(hour) {
     }
 }
 
-//console.log(currentTime(hour))
-
-character.forEach(char => {
-    //compare current dow and time; add weather later ...
-    if (char.time.includes(currentTime(hour)) && char.DOW.includes(dow)){
-        //check for 1 or more
-        //console.log(char.characterName, char.arcana, char.location)
-    }
-});
-
-//if there is a space in the input, changes to - 
-let city = document.querySelector('input').value
-if (city.includes(' ')) {
-    city.replace(' ', '-')
-}
-
 //geocoding city name -> lat, long
 async function getCoord(city) {
     try {
@@ -231,36 +196,53 @@ async function getCoord(city) {
         let lat = data[0].lat
         let lon = data[0].lon
         console.log(lat, lon)
-        return lat, lon
+        return [lat, lon]
     }
     catch(error) {
         console.log(error)
-        document.querySelector('.input').value = 'Could not get Geocoding data'
+        document.querySelector('#input').value = 'Could not get Geocoding data'
     }
 }
 
 
-async function getWeather(lat, lon) {
+async function getWeather(city) {
     try {
-        const weatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=a4f12ee62dadd273edfef816d090594d`
+        const arr = await getCoord(city)
+        const weatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${arr[0]}&lon=${arr[1]}&appid=a4f12ee62dadd273edfef816d090594d`
         console.log(weatherLink)
         let response = await fetch(weatherLink)
         let data = await response.json()
+        console.log(data.weather[0].main)
         if (data.weather[0].main === ('Rain') || data.weather[0].main === ('Snow')) {
-            let precipTF = true
-            return precipTF
+            return true
         }
         else {
-            let precipTF = false
-            return precipTF
+            return false
         }
     }
     catch(error) {
         console.log(error)
-        document.querySelector('input').value = 'Could not get Weather data'
+        document.querySelector('#input').value = 'Could not get Weather data'
     }
 }
 
-console.log(getWeather(getCoord('london')))
+document.querySelector('#submit').addEventListener('click', function(event) {
+    event.preventDefault()
 
-console.log(getWeather(51.5073219, -0.1276474))
+    //if there is a space in the input, changes to - 
+    let city = document.querySelector('#input').value
+    if (city.includes(' ')) {
+        city = city.replace(' ', '-')
+    }
+
+    console.log(getWeather(city))
+
+    character.forEach(char => {
+        //compare current dow and time; add weather later ...
+        if (char.time.includes(currentTime(hour)) && char.DOW.includes(dow)){
+            console.log(char.characterName, char.arcana)
+            //make a function to inject html (images in public? is there even a public folder)
+        }
+    });
+})
+
