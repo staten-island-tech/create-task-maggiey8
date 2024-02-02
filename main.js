@@ -21,9 +21,16 @@ const character = [
         rain: true
     },
     {
-        characterName: 'Lavenza',     //SPECIAL
+        characterName: 'Caroline & Justine',     //REqUEST
         arcana: 'Strength',
         time: ['day', 'night'],
+        DOW: [1,2,3,4,5,6,7],
+        rain: true
+    },
+    {
+        characterName: 'Mishima',       //REQUEST
+        arcana: 'Moon',
+        time: ['night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
@@ -133,13 +140,6 @@ const character = [
         rain: true
     },
     {
-        characterName: 'Mishima',
-        arcana: 'Moon',
-        time: ['night'],
-        DOW: [1,2,3,4,5,6,7],
-        rain: true
-    },
-    {
         characterName: 'Yoshida',
         arcana: 'Sun',
         time: ['night'],
@@ -199,11 +199,10 @@ async function getCoord(city) {
         return [lat, lon]
     }
     catch(error) {
-        console.log(error)
-        document.querySelector('#input').value = 'Could not get Geocoding data'
+        console.error(error)
+        document.querySelector('#input').value = 'Could not get location data'
     }
 }
-
 
 async function getWeather(city) {
     try {
@@ -213,36 +212,44 @@ async function getWeather(city) {
         let response = await fetch(weatherLink)
         let data = await response.json()
         console.log(data.weather[0].main)
-        if (data.weather[0].main === ('Rain') || data.weather[0].main === ('Snow')) {
+        /* if (data.weather[0].main === ('Rain') || data.weather[0].main === ('Snow')|| data.weather[0].main === ('Drizzle') || data.weather[0].main === ('Thunderstorm')) {
             return true
         }
+        */
+       if (200 <= data.weather[0].id && data.weather[0].id <=622) { //all precipitation ids range from these numbers
+           return true
+       }
         else {
             return false
         }
     }
     catch(error) {
-        console.log(error)
-        document.querySelector('#input').value = 'Could not get Weather data'
+        console.error(error)
+        document.querySelector('#input').value = 'Could not get weather data'
     }
 }
 
-document.querySelector('#submit').addEventListener('click', function(event) {
+document.querySelector('#submit').addEventListener('click', async function(event) {
     event.preventDefault()
 
-    //if there is a space in the input, changes to - 
+    //if there is a space in the input, changes to -
     let city = document.querySelector('#input').value
     if (city.includes(' ')) {
         city = city.replace(' ', '-')
     }
 
-    console.log(getWeather(city))
+    let rain = await getWeather(city)
 
-    character.forEach(char => {
-        //compare current dow and time; add weather later ...
-        if (char.time.includes(currentTime(hour)) && char.DOW.includes(dow)){
+    if (rain === true) {    //only if it is raining
+        const charAvailable = character.filter(char => char.rain === true && char.time.includes(currentTime(hour)) && char.DOW.includes(dow))
+        charAvailable.forEach(char => {
             console.log(char.characterName, char.arcana)
-            //make a function to inject html (images in public? is there even a public folder)
+        });
+    }
+    else {
+        const charAvailable = character.filter(char => char.time.includes(currentTime(hour)) && char.DOW.includes(dow))
+        charAvailable.forEach(char => {
+            console.log(char.characterName, char.arcana)
+        });
         }
     });
-})
-

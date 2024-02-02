@@ -29,3 +29,8 @@
 /* Judgement
     11/20
 */
+
+/*  Locked days?
+    Yaldabaoth 12/24
+    Maruki 2/3
+*/
