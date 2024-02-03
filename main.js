@@ -2,161 +2,161 @@ const character = [
     {
         characterName: 'Igor',        //AUTO 
         arcana: 'Fool',
-        time: ['day', 'night'],
+        time: ['Morning', 'Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Morgana',        //AUTO
         arcana: 'Magician',
-        time: ['day','night'],
+        time: ['Morning','Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Sae',       //AUTO
         arcana: 'Judgement',
-        time: ['day, night'],
+        time: ['Morning', 'Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Caroline & Justine',     //REqUEST
         arcana: 'Strength',
-        time: ['day', 'night'],
+        time: ['Morning', 'Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Mishima',       //REQUEST
         arcana: 'Moon',
-        time: ['night'],
+        time: ['Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Ryuji',
         arcana: 'Chariot',
-        time: ['day'],
+        time: ['Morning'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Ann',
         arcana: 'Lovers',
-        time: ['day'],
+        time: ['Morning'],
         DOW: [1,2,3,5,7],
         rain: true
     },
     {
         characterName: 'Yusuke',
         arcana: 'Emperor',
-        time: ['day'],
+        time: ['Morning'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Makoto',
         arcana: 'Priestess',
-        time: ['day'],
+        time: ['Morning'],
         DOW:  [2,4,6,7],
         rain: true
     },
     {
         characterName: 'Futaba',
         arcana: 'Hermit',
-        time: ['day'],
+        time: ['Morning'],
         DOW: [3,4,6,7],
         rain: false
     },
     {
         characterName: 'Haru',
         arcana: 'Empress',
-        time: ['day'],
+        time: ['Morning'],
         DOW: [1,2,3,4,5,6],
         rain: false
     },
     {
         characterName: 'Akechi',
         arcana: 'Justice',
-        time: ['night'],
+        time: ['Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Sumire',
         arcana: 'Faith',
-        time: ['day'],
+        time: ['Morning'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Maruki',
         arcana: 'Councillor',
-        time: ['day'],
+        time: ['Morning'],
         DOW: [1,2,3,5],
         rain: true
     },
     {
         characterName: 'Chihaya',
         arcana: 'Fortune',
-        time: ['night'],
+        time: ['Evening'],
         DOW: [2,4,6,7],
         rain: false
     },
     {
         characterName: 'Iwai',
         arcana: 'Hanged Man',
-        time: ['night'],
+        time: ['Evening'],
         DOW: [2,4,7],
         rain: true
     },
     {
         characterName: 'Takemi',
         arcana: 'Death',
-        time: ['day'],
+        time: ['Morning'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Kawakami',
         arcana: 'Temperance',
-        time: ['night'],
+        time: ['Evening'],
         DOW: [5,6],
         rain: true
     },
     {
         characterName: 'Ohya',
         arcana: 'Devil',
-        time: ['night'],
+        time: ['Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Hifumi',
         arcana: 'Star',
-        time: ['night'],
+        time: ['Evening'],
         DOW: [1,3,6,7],
         rain: true
     },
     {
         characterName: 'Yoshida',
         arcana: 'Sun',
-        time: ['night'],
+        time: ['Evening'],
         DOW: [7],
         rain: true
     },
     {
         characterName: 'Sojiro',
         arcana: 'Hierophant',
-        time: ['night'],
+        time: ['Evening'],
         DOW: [1,2,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Shinya',
         arcana: 'Tower',
-        time: ['day'],
+        time: ['Morning'],
         DOW: [1,2,4,6],
         rain: true
     },
@@ -167,22 +167,25 @@ const current = new Date(timestamp)
 
 let hour = current.getHours()
 let dow = current.getDay()
+const dowArr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
 
 //use this to compare to special dates (ingame auto?)
 let date = `${current.getMonth()+1}/${current.getDate()}`
-console.log(date)
+
+document.querySelector('#date').textContent = date + ' ' + dowArr[dow-1] + ' ' + currentTime(hour)
 
 //console.log(hour, dow)
 
 function currentTime(hour) {
-    //Day
+    //Morning
     if (5 <= hour && hour <= 16) {
-        let time = 'day'
+        let time = 'Morning'
         return time
     }
-    //Night
+    //Evening
     else if ((0 <= hour && hour <= 4)|| (17 <= hour && hour <= 23)){
-        let time = 'night'
+        let time = 'Evening'
         return time
     }
 }
@@ -208,10 +211,9 @@ async function getWeather(city) {
     try {
         const arr = await getCoord(city)
         const weatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${arr[0]}&lon=${arr[1]}&appid=a4f12ee62dadd273edfef816d090594d`
-        console.log(weatherLink)
         let response = await fetch(weatherLink)
         let data = await response.json()
-        console.log(data.weather[0].main)
+        document.querySelector('#weather').textContent = (data.weather[0].main)
         /* if (data.weather[0].main === ('Rain') || data.weather[0].main === ('Snow')|| data.weather[0].main === ('Drizzle') || data.weather[0].main === ('Thunderstorm')) {
             return true
         }
@@ -229,6 +231,36 @@ async function getWeather(city) {
     }
 }
 
+function injectHTML(charAvailable) { 
+    charAvailable.forEach(char=> {
+      document.querySelector(".container").insertAdjacentHTML(
+        'beforeend',
+        `<div class="card">
+        <h4>${char.characterName}</h4>
+        <img src="public/${char.characterName.toLowerCase()}.png" alt="${char.characterName} confidant"></img>
+        <h5>${char.arcana}</h5>
+        </div>`)  
+    });
+  }
+
+injectHTML(check(true))
+
+  function clear() {
+    const orig = document.querySelector(".container")
+    orig.innerHTML = ""
+  }
+
+function check(rain) {
+    if (rain === true) {    //only if it is raining
+        const charAvailable = character.filter(char => char.rain === true && char.time.includes(currentTime(hour)) && char.DOW.includes(dow))
+        return charAvailable
+    }
+    else {
+        const charAvailable = character.filter(char => char.time.includes(currentTime(hour)) && char.DOW.includes(dow))
+        return charAvailable
+    }
+}
+
 document.querySelector('#submit').addEventListener('click', async function(event) {
     event.preventDefault()
 
@@ -238,18 +270,11 @@ document.querySelector('#submit').addEventListener('click', async function(event
         city = city.replace(' ', '-')
     }
 
-    let rain = await getWeather(city)
+    clear()
 
-    if (rain === true) {    //only if it is raining
-        const charAvailable = character.filter(char => char.rain === true && char.time.includes(currentTime(hour)) && char.DOW.includes(dow))
-        charAvailable.forEach(char => {
-            console.log(char.characterName, char.arcana)
-        });
+    let rain = await getWeather(city)
+    injectHTML(check(rain))    
     }
-    else {
-        const charAvailable = character.filter(char => char.time.includes(currentTime(hour)) && char.DOW.includes(dow))
-        charAvailable.forEach(char => {
-            console.log(char.characterName, char.arcana)
-        });
-        }
-    });
+    );
+
+    

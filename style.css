@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Bubblegum Superstar';
+    src: url('fonts/BUBBS___.TTF');
+}
+
+body {
+    background-image: url('public/background.png');
+    background-color: rgba(255, 0, 0, 0.622);
+    background-size: cover;
+    background-blend-mode: color-dodge;
+}
+
+h4 {
+    margin-bottom: 70px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-size: 40px;
+}
+
+h5 {
+    font-family: 'Bubblegum Superstar';
+    font-size: 45px;
+    text-shadow:
+    4px 4px 0 black,
+    -2px -2px 0 black,  
+    2px -2px 0 black,
+    -2px 2px 0 black,
+    2px 2px 0 black;
+}
+.dayInfo {
+    margin-left: 30px;
+    margin-top: 50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-size: 40px;
+    color: black;
+    text-shadow: 
+    -3px 3px white;
+}
+
+#weather{
+    margin-top: -30px;
+}
+
+.getInfo {
+    margin: 50px;
+    font-size: 24px;
+}
+
+#submit {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 25px;
+    width: 70px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 5rem;
+  }
+  
+.card{
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.789);
+    margin: 1rem 0.5rem;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white;
+    color: white;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;    
+}
