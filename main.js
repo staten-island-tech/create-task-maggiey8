@@ -1,141 +1,141 @@
 const character = [
     {
-        characterName: 'Caroline & Justine',     //REQUEST (always available)
-        arcana: 'Strength',
-        time: ['Morning', 'Evening'],
-        DOW: [1,2,3,4,5,6,7],
-        rain: true
-    },
-    {
-        characterName: 'Mishima',       //REQUEST (always available)
-        arcana: 'Moon',
-        time: ['Evening'],
-        DOW: [1,2,3,4,5,6,7],
-        rain: true
-    },
-    {
         characterName: 'Ryuji',
         arcana: 'Chariot',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Ann',
         arcana: 'Lovers',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,5,7],
         rain: true
     },
     {
         characterName: 'Yusuke',
         arcana: 'Emperor',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Makoto',
         arcana: 'Priestess',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW:  [2,4,6,7],
         rain: true
     },
     {
         characterName: 'Futaba',
         arcana: 'Hermit',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW: [3,4,6,7],
         rain: false
     },
     {
         characterName: 'Haru',
         arcana: 'Empress',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6],
         rain: false
     },
     {
         characterName: 'Akechi',
         arcana: 'Justice',
-        time: ['Evening'],
+        time: ['Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Sumire',
         arcana: 'Faith',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Maruki',
         arcana: 'Councillor',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,5],
+        rain: true
+    },
+    {
+        characterName: 'Caroline & Justine',
+        arcana: 'Strength',
+        time: ['Morning', 'Afternoon', 'Evening', 'Night'],
+        DOW: [1,2,3,4,5,6,7],
+        rain: true
+    },
+    {
+        characterName: 'Mishima',
+        arcana: 'Moon',
+        time: ['Evening', 'Night'],
+        DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Chihaya',
         arcana: 'Fortune',
-        time: ['Evening'],
+        time: ['Evening', 'Night'],
         DOW: [2,4,6,7],
         rain: false
     },
     {
         characterName: 'Iwai',
         arcana: 'Hanged Man',
-        time: ['Evening'],
+        time: ['Evening', 'Night'],
         DOW: [2,4,7],
         rain: true
     },
     {
         characterName: 'Takemi',
         arcana: 'Death',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Kawakami',
         arcana: 'Temperance',
-        time: ['Evening'],
+        time: ['Evening', 'Night'],
         DOW: [5,6],
         rain: true
     },
     {
         characterName: 'Ohya',
         arcana: 'Devil',
-        time: ['Evening'],
+        time: ['Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Hifumi',
         arcana: 'Star',
-        time: ['Evening'],
+        time: ['Evening', 'Night'],
         DOW: [1,3,6,7],
         rain: true
     },
     {
         characterName: 'Yoshida',
         arcana: 'Sun',
-        time: ['Evening'],
+        time: ['Evening', 'Night'],
         DOW: [7],
         rain: true
     },
     {
         characterName: 'Sojiro',
         arcana: 'Hierophant',
-        time: ['Evening'],
+        time: ['Evening', 'Night'],
         DOW: [1,2,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Shinya',
         arcana: 'Tower',
-        time: ['Morning'],
+        time: ['Morning', 'Afternoon'],
         DOW: [1,2,4,6],
         rain: true
     },
@@ -145,21 +145,21 @@ const characterAuto = [
     {
         characterName: 'Igor',        //AUTO (available on certain days)
         arcana: 'Fool',
-        time: ['Morning', 'Evening'],
+        time: ['Morning', 'Afternoon', 'Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Morgana',        //AUTO (available on certain days)
         arcana: 'Magician',
-        time: ['Morning','Evening'],
+        time: ['Morning', 'Afternoon','Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
         characterName: 'Sae',       //AUTO (available on certain days)
         arcana: 'Judgement',
-        time: ['Morning', 'Evening'],
+        time: ['Morning', 'Afternoon', 'Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     }
@@ -191,12 +191,20 @@ checkAuto(MorganaDates, date, 1)
 checkAuto(SaeDates, date, 2)
 
 function currentTime(hour) {
-    if (5 <= hour && hour <= 16) {
+    if (6 <= hour && hour <= 11) {
         let time = 'Morning'
         return time
     }
-    else if ((0 <= hour && hour <= 4)|| (17 <= hour && hour <= 23)){
+    else if ((12 <= hour && hour <= 17)) {
+        let time = 'Afternoon'
+        return time
+    }
+    else if ((18 <= hour && hour <= 23)) {
         let time = 'Evening'
+        return time
+    }
+    else if ((0 <= hour && hour <= 5)) {
+        let time = 'Night'
         return time
     }
 }
