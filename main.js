@@ -167,9 +167,9 @@ const current = new Date(timestamp)
 
 let hour = current.getHours()
 let dow = current.getDay()
-const dowArr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-
 let date = `${current.getMonth()+1}/${current.getDate()}`
+
+const dowArr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 document.querySelector('#date').textContent = date + ' ' + dowArr[dow-1] + ' ' + currentTime(hour)
 
@@ -221,23 +221,6 @@ async function getWeather(city) {
     }
 }
 
-function injectHTML(charAvailable) { 
-    charAvailable.forEach(char=> {
-      document.querySelector(".container").insertAdjacentHTML(
-        'beforeend',
-        `<div class="card">
-        <h4>${char.characterName}</h4>
-        <img src="public/${char.characterName.toLowerCase()}.png" alt="${char.characterName} confidant"></img>
-        <h5>${char.arcana}</h5>
-        </div>`)  
-    });
-  }
-
-  function clear() {
-    const orig = document.querySelector(".container")
-    orig.innerHTML = ""
-  }
-
 function check(rain) {
     if (rain === true) {    //only if it is raining
         const charAvailable = character.filter(char => char.rain === true && char.time.includes(currentTime(hour)) && char.DOW.includes(dow))
@@ -249,7 +232,24 @@ function check(rain) {
     }
 }
 
+function injectHTML(charAvailable) { 
+    charAvailable.forEach(char=> {
+      document.querySelector(".container").insertAdjacentHTML(
+        'beforeend',
+        `<div class="card">
+        <h4>${char.characterName}</h4>
+        <img src="public/${char.characterName.toLowerCase()}.png" alt="${char.characterName} confidant"></img>
+        <h5>${char.arcana}</h5>
+        </div>`)  
+    });
+}
+
 injectHTML(check(false)) //default not raining (only uses time data)
+
+function clear() {
+    const orig = document.querySelector(".container")
+    orig.innerHTML = ""
+}
 
 document.querySelector('#submit').addEventListener('click', async function(event) {
     event.preventDefault()
@@ -265,4 +265,4 @@ document.querySelector('#submit').addEventListener('click', async function(event
     let rain = await getWeather(city)
     injectHTML(check(rain))    
     }
-    );
+);
