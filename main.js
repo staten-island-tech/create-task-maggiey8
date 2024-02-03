@@ -1,34 +1,34 @@
 const character = [
     {
-        characterName: 'Igor',        //AUTO 
+        characterName: 'Igor',        //AUTO (always available)
         arcana: 'Fool',
         time: ['Morning', 'Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
-        characterName: 'Morgana',        //AUTO
+        characterName: 'Morgana',        //AUTO (always available)
         arcana: 'Magician',
         time: ['Morning','Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
-        characterName: 'Sae',       //AUTO
+        characterName: 'Sae',       //AUTO (always available)
         arcana: 'Judgement',
         time: ['Morning', 'Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
-        characterName: 'Caroline & Justine',     //REqUEST
+        characterName: 'Caroline & Justine',     //REqUEST (always available)
         arcana: 'Strength',
         time: ['Morning', 'Evening'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
     {
-        characterName: 'Mishima',       //REQUEST
+        characterName: 'Mishima',       //REQUEST (always available)
         arcana: 'Moon',
         time: ['Evening'],
         DOW: [1,2,3,4,5,6,7],
@@ -169,21 +169,15 @@ let hour = current.getHours()
 let dow = current.getDay()
 const dowArr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
-
-//use this to compare to special dates (ingame auto?)
 let date = `${current.getMonth()+1}/${current.getDate()}`
 
 document.querySelector('#date').textContent = date + ' ' + dowArr[dow-1] + ' ' + currentTime(hour)
 
-//console.log(hour, dow)
-
 function currentTime(hour) {
-    //Morning
     if (5 <= hour && hour <= 16) {
         let time = 'Morning'
         return time
     }
-    //Evening
     else if ((0 <= hour && hour <= 4)|| (17 <= hour && hour <= 23)){
         let time = 'Evening'
         return time
@@ -214,10 +208,6 @@ async function getWeather(city) {
         let response = await fetch(weatherLink)
         let data = await response.json()
         document.querySelector('#weather').textContent = (data.weather[0].main)
-        /* if (data.weather[0].main === ('Rain') || data.weather[0].main === ('Snow')|| data.weather[0].main === ('Drizzle') || data.weather[0].main === ('Thunderstorm')) {
-            return true
-        }
-        */
        if (200 <= data.weather[0].id && data.weather[0].id <=622) { //all precipitation ids range from these numbers
            return true
        }
@@ -243,8 +233,6 @@ function injectHTML(charAvailable) {
     });
   }
 
-injectHTML(check(true))
-
   function clear() {
     const orig = document.querySelector(".container")
     orig.innerHTML = ""
@@ -261,6 +249,8 @@ function check(rain) {
     }
 }
 
+injectHTML(check(false)) //default not raining (only uses time data)
+
 document.querySelector('#submit').addEventListener('click', async function(event) {
     event.preventDefault()
 
@@ -276,5 +266,3 @@ document.querySelector('#submit').addEventListener('click', async function(event
     injectHTML(check(rain))    
     }
     );
-
-    
