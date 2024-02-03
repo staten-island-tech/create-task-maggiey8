@@ -1,27 +1,6 @@
 const character = [
     {
-        characterName: 'Igor',        //AUTO (always available)
-        arcana: 'Fool',
-        time: ['Morning', 'Evening'],
-        DOW: [1,2,3,4,5,6,7],
-        rain: true
-    },
-    {
-        characterName: 'Morgana',        //AUTO (always available)
-        arcana: 'Magician',
-        time: ['Morning','Evening'],
-        DOW: [1,2,3,4,5,6,7],
-        rain: true
-    },
-    {
-        characterName: 'Sae',       //AUTO (always available)
-        arcana: 'Judgement',
-        time: ['Morning', 'Evening'],
-        DOW: [1,2,3,4,5,6,7],
-        rain: true
-    },
-    {
-        characterName: 'Caroline & Justine',     //REqUEST (always available)
+        characterName: 'Caroline & Justine',     //REQUEST (always available)
         arcana: 'Strength',
         time: ['Morning', 'Evening'],
         DOW: [1,2,3,4,5,6,7],
@@ -162,6 +141,34 @@ const character = [
     },
 ]
 
+const characterAuto = [
+    {
+        characterName: 'Igor',        //AUTO (available on certain days)
+        arcana: 'Fool',
+        time: ['Morning', 'Evening'],
+        DOW: [1,2,3,4,5,6,7],
+        rain: true
+    },
+    {
+        characterName: 'Morgana',        //AUTO (available on certain days)
+        arcana: 'Magician',
+        time: ['Morning','Evening'],
+        DOW: [1,2,3,4,5,6,7],
+        rain: true
+    },
+    {
+        characterName: 'Sae',       //AUTO (available on certain days)
+        arcana: 'Judgement',
+        time: ['Morning', 'Evening'],
+        DOW: [1,2,3,4,5,6,7],
+        rain: true
+    }
+]
+
+const IgorDates = ['4/12', '4/18', '5/5', '6/5', '6/11', '8/21', '8/22', '8/31', '10/11', '12/24']
+const MorganaDates = ['4/15', '5/2', '6/5', '6/20', '7/9', '7/25', '8/29', '9/17', '10/11', '12/23']
+const SaeDates = ['7/9', '7/24', '8/22', '9/13', '10/12', '10/28', '11/20']
+
 const timestamp = Date.now()
 const current = new Date(timestamp)
 
@@ -171,7 +178,17 @@ let date = `${current.getMonth()+1}/${current.getDate()}`
 
 const dowArr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
-document.querySelector('#date').textContent = date + ' ' + dowArr[dow-1] + ' ' + currentTime(hour)
+function checkAuto(arr, date, pos) {
+    for (let i=0; i<arr.length; i++) {
+        if (arr[i] === date) {
+            character.unshift(characterAuto[pos])
+        }
+    }
+}
+
+checkAuto(IgorDates, date, 0)
+checkAuto(MorganaDates, date, 1)
+checkAuto(SaeDates, date, 2)
 
 function currentTime(hour) {
     if (5 <= hour && hour <= 16) {
@@ -184,6 +201,8 @@ function currentTime(hour) {
     }
 }
 
+document.querySelector('#date').textContent = date + ' ' + dowArr[dow-1] + ' ' + currentTime(hour)
+
 //geocoding city name -> lat, long
 async function getCoord(city) {
     try {
@@ -192,7 +211,6 @@ async function getCoord(city) {
         let data = await response.json()
         let lat = data[0].lat
         let lon = data[0].lon
-        console.log(lat, lon)
         return [lat, lon]
     }
     catch(error) {
@@ -205,6 +223,7 @@ async function getWeather(city) {
     try {
         const arr = await getCoord(city)
         const weatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${arr[0]}&lon=${arr[1]}&appid=a4f12ee62dadd273edfef816d090594d`
+        console.log(weatherLink)
         let response = await fetch(weatherLink)
         let data = await response.json()
         document.querySelector('#weather').textContent = (data.weather[0].main)
