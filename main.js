@@ -2,6 +2,7 @@ const character = [
     {
         characterName: 'Ryuji',
         arcana: 'Chariot',
+        number: 'VII',
         time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -9,6 +10,7 @@ const character = [
     {
         characterName: 'Ann',
         arcana: 'Lovers',
+        number: 'VI',
         time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,5,7],
         rain: true
@@ -16,6 +18,7 @@ const character = [
     {
         characterName: 'Yusuke',
         arcana: 'Emperor',
+        number: 'IV',
         time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -23,6 +26,7 @@ const character = [
     {
         characterName: 'Makoto',
         arcana: 'Priestess',
+        number: 'II',
         time: ['Morning', 'Afternoon'],
         DOW:  [2,4,6,7],
         rain: true
@@ -30,6 +34,7 @@ const character = [
     {
         characterName: 'Futaba',
         arcana: 'Hermit',
+        number: 'IX',
         time: ['Morning', 'Afternoon'],
         DOW: [3,4,6,7],
         rain: false
@@ -37,6 +42,7 @@ const character = [
     {
         characterName: 'Haru',
         arcana: 'Empress',
+        number: 'III',
         time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6],
         rain: false
@@ -44,6 +50,7 @@ const character = [
     {
         characterName: 'Akechi',
         arcana: 'Justice',
+        number: 'VIII',
         time: ['Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -51,6 +58,7 @@ const character = [
     {
         characterName: 'Sumire',
         arcana: 'Faith',
+        number: '',
         time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -58,6 +66,7 @@ const character = [
     {
         characterName: 'Maruki',
         arcana: 'Councillor',
+        number: '1',
         time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,5],
         rain: true
@@ -65,6 +74,7 @@ const character = [
     {
         characterName: 'Caroline & Justine',
         arcana: 'Strength',
+        number: 'XI',
         time: ['Morning', 'Afternoon', 'Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -72,6 +82,7 @@ const character = [
     {
         characterName: 'Mishima',
         arcana: 'Moon',
+        number: 'XVIII',
         time: ['Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -79,6 +90,7 @@ const character = [
     {
         characterName: 'Chihaya',
         arcana: 'Fortune',
+        number: 'X',
         time: ['Evening', 'Night'],
         DOW: [2,4,6,7],
         rain: false
@@ -86,6 +98,7 @@ const character = [
     {
         characterName: 'Iwai',
         arcana: 'Hanged Man',
+        number: 'XII',
         time: ['Evening', 'Night'],
         DOW: [2,4,7],
         rain: true
@@ -93,6 +106,7 @@ const character = [
     {
         characterName: 'Takemi',
         arcana: 'Death',
+        number: 'XIII',
         time: ['Morning', 'Afternoon'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -100,6 +114,7 @@ const character = [
     {
         characterName: 'Kawakami',
         arcana: 'Temperance',
+        number: 'XIV',
         time: ['Evening', 'Night'],
         DOW: [5,6],
         rain: true
@@ -107,6 +122,7 @@ const character = [
     {
         characterName: 'Ohya',
         arcana: 'Devil',
+        number: 'XV',
         time: ['Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -114,6 +130,7 @@ const character = [
     {
         characterName: 'Hifumi',
         arcana: 'Star',
+        number: 'XVII',
         time: ['Evening', 'Night'],
         DOW: [1,3,6,7],
         rain: true
@@ -121,6 +138,7 @@ const character = [
     {
         characterName: 'Yoshida',
         arcana: 'Sun',
+        number: 'XIX',
         time: ['Evening', 'Night'],
         DOW: [7],
         rain: true
@@ -128,6 +146,7 @@ const character = [
     {
         characterName: 'Sojiro',
         arcana: 'Hierophant',
+        number: 'V',
         time: ['Evening', 'Night'],
         DOW: [1,2,4,5,6,7],
         rain: true
@@ -135,6 +154,7 @@ const character = [
     {
         characterName: 'Shinya',
         arcana: 'Tower',
+        number: 'XVI',
         time: ['Morning', 'Afternoon'],
         DOW: [1,2,4,6],
         rain: true
@@ -145,6 +165,7 @@ const characterAuto = [
     {
         characterName: 'Igor',        //AUTO (available on certain days)
         arcana: 'Fool',
+        number: '0',
         time: ['Morning', 'Afternoon', 'Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -152,6 +173,7 @@ const characterAuto = [
     {
         characterName: 'Morgana',        //AUTO (available on certain days)
         arcana: 'Magician',
+        number: 'I',
         time: ['Morning', 'Afternoon','Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -159,6 +181,7 @@ const characterAuto = [
     {
         characterName: 'Sae',       //AUTO (available on certain days)
         arcana: 'Judgement',
+        number: 'XX',
         time: ['Morning', 'Afternoon', 'Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
@@ -264,6 +287,7 @@ function injectHTML(charAvailable) {
       document.querySelector(".container").insertAdjacentHTML(
         'beforeend',
         `<div class="card">
+        <h5>${char.number}</h5>
         <h4>${char.characterName}</h4>
         <img src="public/${char.characterName.toLowerCase()}.png" alt="${char.characterName} confidant"></img>
         <h5>${char.arcana}</h5>

@@ -11,7 +11,8 @@ body {
 }
 
 h4 {
-    margin-bottom: 70px;
+    margin: auto;
+    padding-top: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: italic;
     font-size: 40px;
@@ -26,7 +27,9 @@ h5 {
     2px -2px 0 black,
     -2px 2px 0 black,
     2px 2px 0 black;
+    margin: auto;
 }
+
 .dayInfo {
     margin-left: 30px;
     margin-top: 50px;
@@ -69,7 +72,38 @@ h5 {
     border-color: white;
     color: white;
     align-items: center;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-around;    
+    max-width: 39vw;
+    min-width: 320px;
+    max-height: 80vh;
 }
+
+img {
+    max-height: 40vh;
+    padding: 40px 0px;
+}
+
+@media screen and (max-width: 1000px) {
+    .card {
+        width: 60%;
+        height: 60%;
+        min-height: 600px;
+    }
+    img {
+        max-width: 50vw;
+    }
+  }
+  
+  @media screen and (max-width: 900) {
+    .card {
+        width: 100%;
+        height: 100%;
+    }
+    img {
+        max-width: 60vw;
+        min-width: none;
+    }
+  }
