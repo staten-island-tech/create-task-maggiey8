@@ -75,7 +75,7 @@ const character = [
         characterName: 'Caroline & Justine',
         arcana: 'Strength',
         number: 'XI',
-        time: ['Morning', 'Afternoon', 'Evening', 'Night'],
+        time: ['Early Morning', 'Morning', 'Afternoon', 'Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
@@ -166,7 +166,7 @@ const characterAuto = [
         characterName: 'Igor',        //AUTO (available on certain days)
         arcana: 'Fool',
         number: '0',
-        time: ['Morning', 'Afternoon', 'Evening', 'Night'],
+        time: ['Early Morning', 'Morning', 'Afternoon', 'Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
@@ -174,7 +174,7 @@ const characterAuto = [
         characterName: 'Morgana',        //AUTO (available on certain days)
         arcana: 'Magician',
         number: 'I',
-        time: ['Morning', 'Afternoon','Evening', 'Night'],
+        time: ['Early Morning', 'Morning', 'Afternoon','Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     },
@@ -182,7 +182,7 @@ const characterAuto = [
         characterName: 'Sae',       //AUTO (available on certain days)
         arcana: 'Judgement',
         number: 'XX',
-        time: ['Morning', 'Afternoon', 'Evening', 'Night'],
+        time: ['Early Morning', 'Morning', 'Afternoon', 'Evening', 'Night'],
         DOW: [1,2,3,4,5,6,7],
         rain: true
     }
@@ -214,19 +214,23 @@ checkAuto(MorganaDates, date, 1)
 checkAuto(SaeDates, date, 2)
 
 function currentTime(hour) {
-    if (6 <= hour && hour <= 11) {
+    if (0 <= hour && hour <= 5) {
+        let time = 'Early Morning'
+        return time
+    }
+    else if (6 <= hour && hour <= 11) {
         let time = 'Morning'
         return time
     }
-    else if ((12 <= hour && hour <= 17)) {
+    else if (12 <= hour && hour <= 15) {
         let time = 'Afternoon'
         return time
     }
-    else if ((18 <= hour && hour <= 23)) {
+    else if (16 <= hour && hour <= 19) {
         let time = 'Evening'
         return time
     }
-    else if ((0 <= hour && hour <= 5)) {
+    else if (20 <= hour) {
         let time = 'Night'
         return time
     }
